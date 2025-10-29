@@ -1,3 +1,4 @@
+from fastapi import FastAPI, Request
 from transformers import pipeline
 
 app = FastAPI()

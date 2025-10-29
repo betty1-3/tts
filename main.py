@@ -4,6 +4,10 @@ from transformers import pipeline
 app = FastAPI()
 pipe = pipeline("text-to-speech", model="ai4bharat/indic-parler-tts")
 
+model = AutoModel.from_pretrained(
+    "ai4bharat/indic-parler-tts",  # or whichever model you’re using
+    trust_remote_code=True)
+
 @app.post("/tts")
 async def tts(request: Request):
     data = await request.json()
@@ -17,3 +21,4 @@ async def tts(request: Request):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
